@@ -1,0 +1,14 @@
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+
+.vscode/
+*.user
+*.suo
+*.cache
+*.log
+
+appsettings*.json
+

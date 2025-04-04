@@ -1,0 +1,270 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\4sem\\OOP\\LR1\\Paint\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\actions\\drawer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:actions\\drawer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\actions\\backgrounder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:actions\\backgrounder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\actions\\mover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:actions\\mover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\figures\\heart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:figures\\heart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\input.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:input.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\action.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:action.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\figures\\circle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:figures\\circle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\figures\\triangle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:figures\\triangle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\actions\\filemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:actions\\filemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\figure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:figure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\figures\\star.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:figures\\star.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\figures\\rectangle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:figures\\rectangle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|d:\\4sem\\oop\\lr1\\paint\\paint.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6268CAA2-E78B-4918-9662-F977597105A5}|Paint.csproj|solutionrelative:paint.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Drawer.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Actions\\Drawer.cs",
+              "RelativeDocumentMoniker": "Actions\\Drawer.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Actions\\Drawer.cs",
+              "RelativeToolTip": "Actions\\Drawer.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAAwGgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T20:20:38.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Backgrounder.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Actions\\Backgrounder.cs",
+              "RelativeDocumentMoniker": "Actions\\Backgrounder.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Actions\\Backgrounder.cs",
+              "RelativeToolTip": "Actions\\Backgrounder.cs",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAwwLIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T11:41:07.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Triangle.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Figures\\Triangle.cs",
+              "RelativeDocumentMoniker": "Figures\\Triangle.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Figures\\Triangle.cs",
+              "RelativeToolTip": "Figures\\Triangle.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwDwAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T11:40:43.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FileManager.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Actions\\FileManager.cs",
+              "RelativeDocumentMoniker": "Actions\\FileManager.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Actions\\FileManager.cs",
+              "RelativeToolTip": "Actions\\FileManager.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBcAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T11:41:15.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Action.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Action.cs",
+              "RelativeDocumentMoniker": "Action.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Action.cs",
+              "RelativeToolTip": "Action.cs",
+              "ViewState": "AgIAAKkAAAAAAAAAAAAAwMgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T20:12:49.298Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T20:12:52.337Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Menu.cs",
+              "RelativeDocumentMoniker": "Menu.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Menu.cs",
+              "RelativeToolTip": "Menu.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBwAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T20:11:39.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Mover.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Actions\\Mover.cs",
+              "RelativeDocumentMoniker": "Actions\\Mover.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Actions\\Mover.cs",
+              "RelativeToolTip": "Actions\\Mover.cs",
+              "ViewState": "AgIAANYAAAAAAAAAAADwv+kAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T11:41:18.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Circle.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Figures\\Circle.cs",
+              "RelativeDocumentMoniker": "Figures\\Circle.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Figures\\Circle.cs",
+              "RelativeToolTip": "Figures\\Circle.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwCAAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T12:09:45.263Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Heart.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Figures\\Heart.cs",
+              "RelativeDocumentMoniker": "Figures\\Heart.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Figures\\Heart.cs",
+              "RelativeToolTip": "Figures\\Heart.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T12:09:53.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Input.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Input.cs",
+              "RelativeDocumentMoniker": "Input.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Input.cs",
+              "RelativeToolTip": "Input.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T20:12:50.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Figure.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Figure.cs",
+              "RelativeDocumentMoniker": "Figure.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Figure.cs",
+              "RelativeToolTip": "Figure.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAD0AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T20:12:50.116Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Rectangle.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Figures\\Rectangle.cs",
+              "RelativeDocumentMoniker": "Figures\\Rectangle.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Figures\\Rectangle.cs",
+              "RelativeToolTip": "Figures\\Rectangle.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAADMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T12:12:24.075Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Star.cs",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Figures\\Star.cs",
+              "RelativeDocumentMoniker": "Figures\\Star.cs",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Figures\\Star.cs",
+              "RelativeToolTip": "Figures\\Star.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T12:12:33.044Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Paint.csproj",
+              "DocumentMoniker": "D:\\4sem\\OOP\\LR1\\Paint\\Paint.csproj",
+              "RelativeDocumentMoniker": "Paint.csproj",
+              "ToolTip": "D:\\4sem\\OOP\\LR1\\Paint\\Paint.csproj",
+              "RelativeToolTip": "Paint.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-26T20:12:46.919Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
