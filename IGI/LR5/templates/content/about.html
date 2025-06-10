@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}О компании - Книжный магазин{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">О компании</h1>
+            
+            {% if company_info %}
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="h4 mb-3">{{ company_info.name }}</h2>
+                        <div class="mb-4">
+                            <h3 class="h5">Описание</h3>
+                            <p>{{ company_info.description|linebreaks }}</p>
+                        </div>
+
+                        {% if company_info.history %}
+                            <div class="mb-4">
+                                <h3 class="h5">История компании</h3>
+                                <p>{{ company_info.history|linebreaks }}</p>
+                            </div>
+                        {% endif %}
+
+                        {% if company_info.requisites %}
+                            <div class="mb-4">
+                                <h3 class="h5">Реквизиты</h3>
+                                <p>{{ company_info.requisites|linebreaks }}</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="alert alert-info">
+                    Информация о компании в процессе наполнения.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

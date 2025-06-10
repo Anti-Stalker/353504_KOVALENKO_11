@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+
+{% block title %}Корзина - BookStore{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4"><i class="fas fa-shopping-cart me-2"></i>Корзина</h1>
+
+    {% if messages %}
+    <div class="messages mb-4">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if cart_items %}
+        <div class="row">
+            <div class="col-md-8">
+                {% for item in cart_items %}
+                <div class="card mb-3 cart-item" data-item-id="{{ item.pk }}">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h5 class="card-title">{{ item.book.title }}</h5>
+                                <p class="card-text">{{ item.book.summary|truncatewords:20 }}</p>
+                                <p class="text-muted">
+                                    <small>Доступно: <span class="available-quantity">{{ item.book.quantity }}</span> шт.</small>
+                                </p>
+                                {% if item.book.age_restriction > 0 %}
+                                <p class="text-warning">
+                                    <small><i class="fas fa-exclamation-triangle me-1"></i>Возрастное ограничение: {{ item.book.age_restriction }}+</small>
+                                </p>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-2">
+                                <span class="badge bg-primary">{{ item.book.price }} BYN</span>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary decrease-quantity" type="button">-</button>
+                                    <input type="number" class="form-control quantity-input" value="{{ item.quantity }}" min="1" max="{{ item.book.quantity }}">
+                                    <button class="btn btn-outline-secondary increase-quantity" type="button">+</button>
+                                </div>
+                                <div class="invalid-feedback quantity-error"></div>
+                            </div>
+                            <div class="col-md-2 text-end">
+                                <button class="btn btn-danger remove-item">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col text-end">
+                                <strong>Итого: <span class="item-total">{{ item.total_price }}</span> BYN</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Итого к оплате</h5>
+                        <p class="display-6 text-center my-4"><span id="cart-total">{{ total }}</span> BYN</p>
+                        <a href="{% url 'books:checkout' %}" class="btn btn-custom-primary w-100" id="checkout-button">
+                            <i class="fas fa-credit-card me-2"></i>Оформить заказ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle me-2"></i>Ваша корзина пуста.
+            <a href="{% url 'books:book-list' %}" class="alert-link">Перейти в каталог</a>
+        </div>
+    {% endif %}
+</div>
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function updateCartTotal() {
+        let total = 0;
+        document.querySelectorAll('.item-total').forEach(item => {
+            total += parseFloat(item.textContent);
+        });
+        document.getElementById('cart-total').textContent = total.toFixed(2);
+    }
+
+    function updateQuantity(itemId, newQuantity) {
+        return fetch(`/books/cart/update/${itemId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: `quantity=${newQuantity}`
+        })
+        .then(response => response.json());
+    }
+
+    document.querySelectorAll('.cart-item').forEach(item => {
+        const itemId = item.dataset.itemId;
+        const quantityInput = item.querySelector('.quantity-input');
+        const itemTotal = item.querySelector('.item-total');
+        const errorDiv = item.querySelector('.quantity-error');
+        const availableQuantity = parseInt(item.querySelector('.available-quantity').textContent);
+
+        item.querySelector('.increase-quantity').addEventListener('click', function() {
+            const newQuantity = parseInt(quantityInput.value) + 1;
+            if (newQuantity <= availableQuantity) {
+                updateQuantity(itemId, newQuantity).then(data => {
+                    if (data.status === 'updated') {
+                        quantityInput.value = data.quantity;
+                        itemTotal.textContent = data.total.toFixed(2);
+                        updateCartTotal();
+                        errorDiv.textContent = '';
+                        quantityInput.classList.remove('is-invalid');
+                    } else if (data.status === 'error') {
+                        errorDiv.textContent = data.message;
+                        quantityInput.classList.add('is-invalid');
+                    }
+                });
+            }
+        });
+
+        item.querySelector('.decrease-quantity').addEventListener('click', function() {
+            const newQuantity = parseInt(quantityInput.value) - 1;
+            if (newQuantity >= 1) {
+                updateQuantity(itemId, newQuantity).then(data => {
+                    if (data.status === 'updated') {
+                        quantityInput.value = data.quantity;
+                        itemTotal.textContent = data.total.toFixed(2);
+                        updateCartTotal();
+                        errorDiv.textContent = '';
+                        quantityInput.classList.remove('is-invalid');
+                    }
+                });
+            }
+        });
+
+        quantityInput.addEventListener('change', function() {
+            const newQuantity = parseInt(this.value);
+            if (newQuantity >= 1) {
+                updateQuantity(itemId, newQuantity).then(data => {
+                    if (data.status === 'updated') {
+                        this.value = data.quantity;
+                        itemTotal.textContent = data.total.toFixed(2);
+                        updateCartTotal();
+                        errorDiv.textContent = '';
+                        this.classList.remove('is-invalid');
+                    } else if (data.status === 'error') {
+                        errorDiv.textContent = data.message;
+                        this.classList.add('is-invalid');
+                        this.value = data.current_quantity;
+                    }
+                });
+            } else {
+                this.value = 1;
+            }
+        });
+
+        item.querySelector('.remove-item').addEventListener('click', function() {
+            fetch(`/books/cart/remove/${itemId}/`, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'removed') {
+                    item.remove();
+                    updateCartTotal();
+                    if (document.querySelectorAll('.cart-item').length === 0) {
+                        location.reload();
+                    }
+                }
+            });
+        });
+    });
+});
+</script>
+{% endblock %}
+{% endblock %} 

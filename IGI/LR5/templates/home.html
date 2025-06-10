@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная - BookStore{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero-section {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 4rem 0;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-section p {
+        font-size: 1.2rem;
+    }
+
+    .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .calendar-container {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .calendar-nav a {
+        color: var(--accent-color);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--accent-color);
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .calendar-nav a:hover {
+        background-color: var(--accent-color);
+        color: white;
+    }
+
+    .calendar-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .calendar-weekdays {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.5rem 0;
+        color: var(--primary-color);
+    }
+
+    .calendar-weekdays span {
+        width: 14.28%;
+        text-align: center;
+    }
+
+    .calendar-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.5rem 0;
+    }
+
+    .calendar-day {
+        width: 14.28%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+    }
+
+    .current-day {
+        background-color: var(--secondary-color);
+        color: white;
+    }
+
+    .time-display {
+        background: var(--accent-color);
+        color: white;
+        padding: 1rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .quick-links {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .quick-links a {
+        display: block;
+        padding: 0.75rem 1rem;
+        color: var(--text-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .quick-links a:hover {
+        background-color: var(--background-color);
+        color: var(--primary-color);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="hero-section">
+        <h1>Добро пожаловать в BookStore</h1>
+        <p>Откройте для себя мир книг с нами</p>
+    </div>
+
+    <div class="content-grid">
+        <div>
+            <!-- Time Display -->
+            <div class="time-display">
+                <div>
+                    <i class="fas fa-clock"></i>
+                    Текущее время: {{ current_time|date:"H:i:s" }}
+                </div>
+                <div>
+                    <i class="fas fa-globe"></i>
+                    Часовой пояс: {{ timezone_name }}
+                </div>
+            </div>
+
+            {% if latest_article %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Последние новости</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="h4">{{ latest_article.title }}</h2>
+                    {% if latest_article.image %}
+                        <img src="{{ latest_article.image.url }}" class="img-fluid mb-3" alt="{{ latest_article.title }}">
+                    {% endif %}
+                    <p class="card-text">{{ latest_article.short_description }}</p>
+                    <a href="{% url 'content:news-detail' latest_article.pk %}" class="btn btn-custom-primary">Читать далее</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Опубликовано {{ latest_article.created_at|date:"d.m.Y" }}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Calendar Section -->
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <div class="calendar-nav">
+                        <a href="?month={{ calendar.prev_month }}&year={{ calendar.prev_year }}">
+                            <i class="fas fa-chevron-left"></i> Предыдущий
+                        </a>
+                    </div>
+                    <div class="calendar-title">{{ calendar.title }}</div>
+                    <div class="calendar-nav">
+                        <a href="?month={{ calendar.next_month }}&year={{ calendar.next_year }}">
+                            Следующий <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="calendar-weekdays">
+                    {% for day in calendar.weekdays %}
+                    <span>{{ day }}</span>
+                    {% endfor %}
+                </div>
+                {% for row in calendar.rows %}
+                <div class="calendar-row">
+                    {% for day in row %}
+                        {% if day.day %}
+                        <div class="calendar-day {% if day.is_current %}current-day{% endif %}">
+                            {{ day.day }}
+                        </div>
+                        {% else %}
+                        <div class="calendar-day">{{ day }}</div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="quick-links">
+            <h5>Быстрые ссылки</h5>
+            <a href="{% url 'books:book-list' %}"><i class="fas fa-book me-2"></i> Каталог книг</a>
+            <a href="{% url 'content:news' %}"><i class="fas fa-newspaper me-2"></i> Новости</a>
+            <a href="{% url 'content:promo' %}"><i class="fas fa-tag me-2"></i> Актуальные промокоды</a>
+            <a href="{% url 'content:reviews' %}"><i class="fas fa-star me-2"></i> Отзывы</a>
+            <a href="{% url 'content:faq' %}"><i class="fas fa-question-circle me-2"></i> Частые вопросы</a>
+            <a href="{% url 'content:privacy' %}"><i class="fas fa-shield-alt me-2"></i> Политика конфиденциальности</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Обновление времени каждую секунду
+    function updateTime() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString();
+        document.querySelector('.time-display div:first-child').innerHTML =
+            '<i class="fas fa-clock"></i>Текущее время: ' + timeString;
+    }
+
+    setInterval(updateTime, 1000);
+</script>
+{% endblock %}

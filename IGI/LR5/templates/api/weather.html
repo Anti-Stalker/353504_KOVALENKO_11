@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Погода{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Погода</h1>
+                    
+                    {% if weather and city %}
+                        <h2 class="text-center mb-4">{{ city }}</h2>
+                        
+                        <div class="text-center">
+                            <img src="http://openweathermap.org/img/w/{{ weather.weather.0.icon }}.png" 
+                                 alt="{{ weather.weather.0.description }}"
+                                 class="weather-icon mb-3">
+                            
+                            <h3>{{ weather.weather.0.description|capfirst }}</h3>
+                            
+                            <div class="temperature display-4 mb-3">
+                                {{ weather.main.temp|floatformat:0 }}°C
+                            </div>
+                            
+                            <div class="details">
+                                <p><strong>Ощущается как:</strong> {{ weather.main.feels_like|floatformat:0 }}°C</p>
+                                <p><strong>Влажность:</strong> {{ weather.main.humidity }}%</p>
+                                <p><strong>Давление:</strong> {{ weather.main.pressure }} гПа</p>
+                                <p><strong>Скорость ветра:</strong> {{ weather.wind.speed }} м/с</p>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning text-center">
+                            {% if not city %}
+                                Не удалось определить город из вашего адреса. 
+                                Пожалуйста, укажите город в формате "г. Название" в вашем профиле.
+                            {% else %}
+                                Не удалось получить данные о погоде.
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .weather-icon {
+        width: 100px;
+        height: 100px;
+    }
+    .temperature {
+        color: #2c3e50;
+    }
+    .details {
+        text-align: left;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+</style>
+{% endblock %} 

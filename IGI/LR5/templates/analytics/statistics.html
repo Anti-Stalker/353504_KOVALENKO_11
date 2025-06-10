@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+
+{% block title %}Статистика - BookStore{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">Статистика продаж</h1>
+
+    <!-- Основные показатели -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h6 class="card-subtitle mb-2 text-muted">Всего заказов</h6>
+                    <h2 class="card-title mb-0">{{ total_orders|default:"0" }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h6 class="card-subtitle mb-2 text-muted">Общая выручка</h6>
+                    <h2 class="card-title mb-0">{{ total_revenue|default:"0" }} BYN</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h6 class="card-subtitle mb-2 text-muted">Средний чек</h6>
+                    <h2 class="card-title mb-0">{{ average_check|default:"0" }} BYN</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h6 class="card-subtitle mb-2 text-muted">Активных заказов</h6>
+                    <h2 class="card-title mb-0">{{ active_orders|default:"0" }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Графики -->
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Динамика заказов</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="ordersChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Распределение по жанрам</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="genreChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Возрастное распределение</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="ageChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Таблица статистики -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="card-title mb-0">Статистика по типам</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Тип</th>
+                            <th>Количество заказов</th>
+                            <th>Общая сумма</th>
+                            <th>Средняя стоимость</th>
+                            <th>Доля заказов</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for stat in type_statistics %}
+                        <tr>
+                            <td>{{ stat.type }}</td>
+                            <td>{{ stat.orders }}</td>
+                            <td>{{ stat.total }} BYN</td>
+                            <td>{{ stat.average }} BYN</td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" 
+                                         style="width: {{ stat.percentage }}%">
+                                        {{ stat.percentage }}%
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JSON data -->
+{{ genre_labels|json_script:"genreLabels" }}
+{{ genre_data|json_script:"genreData" }}
+{{ age_labels|json_script:"ageLabels" }}
+{{ age_data|json_script:"ageData" }}
+{{ orders_by_month|json_script:"ordersByMonth" }}
+{{ revenue_by_month|json_script:"revenueByMonth" }}
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // График заказов
+    const ordersCtx = document.getElementById('ordersChart').getContext('2d');
+    new Chart(ordersCtx, {
+        type: 'line',
+        data: {
+            labels: {{ months|safe }},
+            datasets: [{
+                label: 'Количество заказов',
+                data: {{ orders_by_month|safe }},
+                borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                tension: 0.1,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Количество заказов по месяцам'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+
+    // График по жанрам
+    const genreCtx = document.getElementById('genreChart').getContext('2d');
+    new Chart(genreCtx, {
+        type: 'pie',
+        data: {
+            labels: {{ genre_labels|safe }},
+            datasets: [{
+                data: {{ genre_data|safe }},
+                backgroundColor: [
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgb(255, 99, 132)',
+                    'rgb(153, 102, 255)'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Распределение по жанрам'
+                }
+            }
+        }
+    });
+
+    // График возрастного распределения
+    const ageCtx = document.getElementById('ageChart').getContext('2d');
+    new Chart(ageCtx, {
+        type: 'bar',
+        data: {
+            labels: {{ age_labels|safe }},
+            datasets: [{
+                label: 'Количество покупателей',
+                data: {{ age_data|safe }},
+                backgroundColor: 'rgb(75, 192, 192)',
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Возрастное распределение покупателей'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+{% endblock %} 

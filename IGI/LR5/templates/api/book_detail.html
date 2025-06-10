@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ book.volumeInfo.title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {% if book.volumeInfo.imageLinks.thumbnail %}
+                <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" class="img-fluid" alt="{{ book.volumeInfo.title }}">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <h1>{{ book.volumeInfo.title }}</h1>
+            
+            {% if book.volumeInfo.authors %}
+                <p><strong>Авторы:</strong> {{ book.volumeInfo.authors|join:", " }}</p>
+            {% endif %}
+            
+            {% if book.volumeInfo.publisher %}
+                <p><strong>Издательство:</strong> {{ book.volumeInfo.publisher }}</p>
+            {% endif %}
+            
+            {% if book.volumeInfo.publishedDate %}
+                <p><strong>Дата публикации:</strong> {{ book.volumeInfo.publishedDate }}</p>
+            {% endif %}
+            
+            {% if book.volumeInfo.pageCount %}
+                <p><strong>Количество страниц:</strong> {{ book.volumeInfo.pageCount }}</p>
+            {% endif %}
+            
+            {% if book.volumeInfo.categories %}
+                <p><strong>Категории:</strong> {{ book.volumeInfo.categories|join:", " }}</p>
+            {% endif %}
+            
+            {% if book.volumeInfo.description %}
+                <h3>Описание</h3>
+                <p>{{ book.volumeInfo.description }}</p>
+            {% endif %}
+            
+            {% if book.volumeInfo.industryIdentifiers %}
+                <h3>Идентификаторы</h3>
+                {% for identifier in book.volumeInfo.industryIdentifiers %}
+                    <p><strong>{{ identifier.type }}:</strong> {{ identifier.identifier }}</p>
+                {% endfor %}
+            {% endif %}
+            
+            <a href="{% url 'api:book-search' %}" class="btn btn-secondary">Назад к поиску</a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

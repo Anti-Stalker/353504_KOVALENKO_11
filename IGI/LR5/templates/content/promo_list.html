@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Акции и промокоды - BookStore{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="fas fa-percent me-2"></i>Акции и промокоды</h1>
+    <p class="lead">Специальные предложения для наших покупателей</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for promo in object_list %}
+            {% if promo.is_active %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="fas fa-tag me-2"></i>{{ promo.code }}
+                                </h5>
+                                <span class="badge bg-primary rounded-pill">-{{ promo.discount }}%</span>
+                            </div>
+                            <p class="card-text">{{ promo.description }}</p>
+                            <div class="mt-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock me-1"></i>Действует до: {{ promo.valid_to|date:"d.m.Y" }}
+                                </small>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-0">
+                            <button class="btn btn-custom-primary btn-sm w-100" onclick="copyPromoCode('{{ promo.code }}')">
+                                <i class="fas fa-copy me-1"></i>Копировать код
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info text-center">
+                    <i class="fas fa-info-circle me-2"></i>В данный момент нет активных промокодов
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+function copyPromoCode(code) {
+    navigator.clipboard.writeText(code).then(function() {
+        alert('Промокод скопирован: ' + code);
+    });
+}
+</script>
+{% endblock %} 

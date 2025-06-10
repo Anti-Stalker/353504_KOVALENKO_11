@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% load book_extras %}
+
+{% block title %}Статистика - BookStore{% endblock %}
+
+{% block extra_head %}
+<style>
+.chart-container {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chart-container img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px; /* Ограничиваем максимальную высоту */
+    object-fit: contain;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Статистика продаж</h2>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Распределение продаж по жанрам</h4>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <img id="genre-chart" src="data:image/png;base64,{{ genre_chart }}" alt="График распределения по жанрам">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Возрастное распределение покупателей</h4>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <img id="age-chart" src="data:image/png;base64,{{ age_chart }}" alt="График возрастного распределения">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Статистика по клиентам -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Клиенты и их покупки</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Клиент</th>
+                                    <th>Кол-во покупок</th>
+                                    <th>Общая сумма</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for customer in customer_stats %}
+                                <tr>
+                                    <td>{{ customer.username }}</td>
+                                    <td>{{ customer.purchase_count }}</td>
+                                    <td>{{ customer.total_spent|floatformat:2 }} BYN</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статистика по товарам -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Продажи по товарам</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Книга</th>
+                                    <th>Продано</th>
+                                    <th>Сумма продаж</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for book in book_stats %}
+                                <tr>
+                                    <td>{{ book.title }}</td>
+                                    <td>{{ book.quantity_sold }}</td>
+                                    <td>{{ book.total_sales|floatformat:2 }} BYN</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Статистические показатели по продажам -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Показатели по продажам</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Среднее значение
+                            <span>{{ sales_stats.average|floatformat:2 }} BYN</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Медиана
+                            <span>{{ sales_stats.median|floatformat:2 }} BYN</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Мода
+                            <span>{{ sales_stats.mode|floatformat:2 }} BYN</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статистика по возрасту клиентов -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Возраст клиентов</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Средний возраст
+                            <span>{{ age_stats.average|floatformat:1 }} лет</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Медианный возраст
+                            <span>{{ age_stats.median|floatformat:1 }} лет</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Популярность и прибыльность жанров -->
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Анализ жанров</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Самый популярный жанр</h5>
+                            <p class="lead">{{ most_popular_genre.0 }} ({{ most_popular_genre.1 }} продаж)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Самый прибыльный жанр</h5>
+                            <p class="lead">{{ most_profitable_genre.0 }} ({{ most_profitable_genre.1|floatformat:2 }} BYN)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+function updateCharts() {
+    fetch('{% url "books:get_updated_charts" %}')
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error updating charts:', data.error);
+                return;
+            }
+            
+            // Обновляем изображения графиков
+            document.getElementById('genre-chart').src = 'data:image/png;base64,' + data.genre_chart;
+            document.getElementById('age-chart').src = 'data:image/png;base64,' + data.age_chart;
+        })
+        .catch(error => {
+            console.error('Error fetching chart data:', error);
+        });
+}
+
+// Обновляем графики каждые 30 секунд
+setInterval(updateCharts, 30000);
+
+// Также обновляем при загрузке страницы
+document.addEventListener('DOMContentLoaded', updateCharts);
+</script>
+{% endblock %}
+{% endblock %} 

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }} - Книжный магазин{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'content:news' %}">Новости</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ article.title }}</li>
+                </ol>
+            </nav>
+
+            <article class="mb-5">
+                <h1 class="mb-4">{{ article.title }}</h1>
+                
+                {% if article.image %}
+                    <img src="{{ article.image.url }}" class="img-fluid rounded mb-4" alt="{{ article.title }}">
+                {% endif %}
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="mb-4">
+                            {{ article.content|linebreaks }}
+                        </div>
+                        
+                        <div class="text-muted">
+                            <small>Опубликовано: {{ article.created_at|date:"d.m.Y H:i" }}</small>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+{% endblock %} 

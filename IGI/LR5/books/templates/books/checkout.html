@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Оформление заказа</h2>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Ваш заказ</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Книга</th>
+                        <th>Количество</th>
+                        <th>Цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart_items %}
+                    <tr>
+                        <td>{{ item.book.title }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.total_price }} руб.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2"><strong>Итого:</strong></td>
+                        <td><strong>{{ total }} руб.</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group mb-3">
+            <label for="delivery_method">Способ получения:</label>
+            <select class="form-control" id="delivery_method" name="delivery_method" required>
+                <option value="">Выберите способ получения</option>
+                <option value="pickup">Самовывоз</option>
+                <option value="delivery">Доставка</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Оформить заказ</button>
+        <a href="{% url 'books:cart' %}" class="btn btn-secondary">Вернуться в корзину</a>
+    </form>
+</div>
+{% endblock %} 

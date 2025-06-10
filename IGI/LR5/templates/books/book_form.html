@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {% if form.instance.pk %}
+        Редактирование книги - BookStore
+    {% else %}
+        Добавление книги - BookStore
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'books:book-list' %}">Каталог</a></li>
+            {% if form.instance.pk %}
+                <li class="breadcrumb-item"><a href="{% url 'books:book-detail' form.instance.pk %}">{{ form.instance.title }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Редактирование</li>
+            {% else %}
+                <li class="breadcrumb-item active" aria-current="page">Добавление книги</li>
+            {% endif %}
+        </ol>
+    </nav>
+
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title mb-4">
+                {% if form.instance.pk %}
+                    <i class="fas fa-edit me-2"></i>Редактирование книги
+                {% else %}
+                    <i class="fas fa-plus me-2"></i>Добавление книги
+                {% endif %}
+            </h1>
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-primary">
+                        {% if form.instance.pk %}
+                            <i class="fas fa-save me-2"></i>Сохранить изменения
+                        {% else %}
+                            <i class="fas fa-plus me-2"></i>Добавить книгу
+                        {% endif %}
+                    </button>
+                    {% if form.instance.pk %}
+                        <a href="{% url 'books:book-detail' form.instance.pk %}" class="btn btn-secondary">
+                            <i class="fas fa-times me-2"></i>Отмена
+                        </a>
+                    {% else %}
+                        <a href="{% url 'books:book-list' %}" class="btn btn-secondary">
+                            <i class="fas fa-times me-2"></i>Отмена
+                        </a>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %} 

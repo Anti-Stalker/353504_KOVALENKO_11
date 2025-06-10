@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}API Демонстрация{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Демонстрация работы API</h1>
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="row">
+        <!-- Cat Facts API Section -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Интересные факты о кошках</h3>
+                </div>
+                <div class="card-body">
+                    <div id="cat-fact-container" class="mb-4">
+                        {% if cat_fact %}
+                            <p class="lead">{{ cat_fact }}</p>
+                        {% else %}
+                            <p class="text-muted">Факт не загружен</p>
+                        {% endif %}
+                    </div>
+                    <button id="new-cat-fact" class="btn btn-primary">Получить новый факт</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nationality Predictor Section -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">Определение национальности по имени</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="name-input" class="form-label">Введите имя:</label>
+                        <input type="text" class="form-control" id="name-input" placeholder="Например: Alex">
+                    </div>
+                    <div id="nationality-container">
+                        {% if nationality %}
+                            <h4 class="mb-3">Результаты для имени: {{ nationality.name }}</h4>
+                            <div class="list-group">
+                                {% for country in nationality.countries %}
+                                    <div class="list-group-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span>{{ country.country_id }}</span>
+                                            <span class="badge bg-primary rounded-pill">{{ country.probability }}%</span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p class="text-muted">Введите имя для анализа</p>
+                        {% endif %}
+                    </div>
+                    <button id="predict-nationality" class="btn btn-success mt-3">Определить национальность</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+document.getElementById('new-cat-fact').addEventListener('click', function() {
+    fetch('{% url "api_integrations:get_cat_fact" %}')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const container = document.getElementById('cat-fact-container');
+                container.innerHTML = `<p class="lead">${data.fact}</p>`;
+            } else {
+                alert('Ошибка при получении факта: ' + data.error);
+            }
+        })
+        .catch(error => {
+            alert('Ошибка при выполнении запроса: ' + error);
+        });
+});
+
+document.getElementById('predict-nationality').addEventListener('click', function() {
+    const name = document.getElementById('name-input').value.trim();
+    if (!name) {
+        alert('Пожалуйста, введите имя');
+        return;
+    }
+
+    fetch(`{% url "api_integrations:predict_nationality" %}?name=${encodeURIComponent(name)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const container = document.getElementById('nationality-container');
+                let countriesList = data.nationality.countries.map(country => `
+                    <div class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span>${country.country_id}</span>
+                            <span class="badge bg-primary rounded-pill">${country.probability}%</span>
+                        </div>
+                    </div>
+                `).join('');
+
+                container.innerHTML = `
+                    <h4 class="mb-3">Результаты для имени: ${data.nationality.name}</h4>
+                    <div class="list-group">
+                        ${countriesList}
+                    </div>
+                `;
+            } else {
+                alert('Ошибка при определении национальности: ' + data.error);
+            }
+        })
+        .catch(error => {
+            alert('Ошибка при выполнении запроса: ' + error);
+        });
+});
+</script>
+{% endblock %}
+{% endblock %} 

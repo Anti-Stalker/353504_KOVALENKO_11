@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block title %}Частые вопросы - BookStore{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="page-header">
+        <h1><i class="fas fa-question-circle me-2"></i>Частые вопросы</h1>
+        <p class="lead">Ответы на самые популярные вопросы наших клиентов</p>
+    </div>
+
+    <div class="accordion" id="faqAccordion">
+        <!-- Вопрос 1 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    Как оформить заказ?
+                </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Для оформления заказа выберите интересующие вас книги, добавьте их в корзину, затем перейдите в корзину и нажмите кнопку "Оформить заказ". Заполните необходимые данные для доставки и выберите способ оплаты.
+                </div>
+            </div>
+        </div>
+
+        <!-- Вопрос 2 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    Какие способы оплаты доступны?
+                </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Мы принимаем оплату банковскими картами (VISA, MasterCard, МИР), электронными деньгами, а также наличными при получении заказа.
+                </div>
+            </div>
+        </div>
+
+        <!-- Вопрос 3 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                    Как долго осуществляется доставка?
+                </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Сроки доставки зависят от вашего региона. В среднем доставка занимает 1-3 рабочих дня в пределах города и 3-7 рабочих дней в другие регионы.
+                </div>
+            </div>
+        </div>
+
+        <!-- Вопрос 4 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                    Можно ли вернуть или обменять книгу?
+                </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Да, вы можете вернуть книгу в течение 14 дней с момента получения, если она не имеет следов использования и сохранен товарный вид. Обмен производится при наличии чека.
+                </div>
+            </div>
+        </div>
+
+        <!-- Вопрос 5 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                    Есть ли у вас система скидок?
+                </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Да, у нас действует накопительная система скидок. Также мы регулярно проводим акции и предоставляем промокоды на различные категории книг.
+                </div>
+            </div>
+        </div>
+
+        <!-- Вопрос 6 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                    Как узнать о наличии книги?
+                </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Наличие книги отображается на странице товара. Если книги нет в наличии, вы можете подписаться на уведомление о поступлении.
+                </div>
+            </div>
+        </div>
+
+        <!-- Вопрос 7 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                    Можно ли заказать книгу, которой нет в каталоге?
+                </button>
+            </h2>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Да, вы можете оставить заявку на заказ книги через форму обратной связи или связаться с нашими менеджерами.
+                </div>
+            </div>
+        </div>
+
+        <!-- Вопрос 8 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                    Как работает программа лояльности?
+                </button>
+            </h2>
+            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    За каждую покупку вы получаете бонусные баллы, которые можно использовать для оплаты следующих заказов. 1 балл = 1 рубль.
+                </div>
+            </div>
+        </div>
+
+        <!-- Вопрос 9 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9">
+                    Есть ли у вас электронные книги?
+                </button>
+            </h2>
+            <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Да, в нашем магазине представлены как печатные, так и электронные версии книг. Электронные книги доступны в форматах PDF, EPUB и FB2.
+                </div>
+            </div>
+        </div>
+
+        <!-- Вопрос 10 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq10">
+                    Как связаться со службой поддержки?
+                </button>
+            </h2>
+            <div id="faq10" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Вы можете связаться с нами по телефону +375 (29) 909-99-03, через форму обратной связи на сайте или по электронной почте info@bookstore.ru. Время работы поддержки: ежедневно с 9:00 до 21:00.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

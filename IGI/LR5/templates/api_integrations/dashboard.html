@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% block title %}API Интеграции - BookStore{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">API Интеграции</h1>
+
+    <!-- Weather Section -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title mb-4">
+                <i class="fas fa-cloud me-2"></i>Погода
+            </h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <input type="text" id="cityInput" class="form-control" placeholder="Введите город">
+                        <button class="btn btn-primary" type="button" onclick="getWeather()">
+                            <i class="fas fa-search me-1"></i>Узнать погоду
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="weatherResult" class="mt-3" style="display: none;">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <img id="weatherIcon" src="" alt="Weather icon" class="me-3">
+                            <div>
+                                <h3 id="cityName" class="mb-2"></h3>
+                                <p id="temperature" class="h4 mb-2"></p>
+                                <p id="description" class="mb-2"></p>
+                                <p class="mb-0">
+                                    <span id="humidity"></span> |
+                                    <span id="windSpeed"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Search Section -->
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title mb-4">
+                <i class="fas fa-book me-2"></i>Поиск книг (Open Library)
+            </h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <input type="text" id="bookQuery" class="form-control" placeholder="Введите название книги">
+                        <button class="btn btn-primary" type="button" onclick="searchBooks()">
+                            <i class="fas fa-search me-1"></i>Найти
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="searchResults" class="mt-3">
+                <!-- Results will be populated here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+function getWeather() {
+    const city = document.getElementById('cityInput').value;
+    if (!city) {
+        alert('Пожалуйста, введите название города');
+        return;
+    }
+
+    fetch(`/api/weather/?city=${encodeURIComponent(city)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const weatherData = data.data;
+                document.getElementById('weatherResult').style.display = 'block';
+                document.getElementById('cityName').textContent = weatherData.city;
+                document.getElementById('temperature').textContent = `${weatherData.temperature}°C`;
+                document.getElementById('description').textContent = weatherData.description;
+                document.getElementById('humidity').textContent = `Влажность: ${weatherData.humidity}%`;
+                document.getElementById('windSpeed').textContent = `Скорость ветра: ${weatherData.wind_speed} м/с`;
+                document.getElementById('weatherIcon').src = `http://openweathermap.org/img/w/${weatherData.icon}.png`;
+            } else {
+                alert(data.error || 'Произошла ошибка при получении данных о погоде');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Произошла ошибка при получении данных о погоде');
+        });
+}
+
+function searchBooks() {
+    const query = document.getElementById('bookQuery').value;
+    if (!query) {
+        alert('Пожалуйста, введите поисковый запрос');
+        return;
+    }
+
+    fetch(`/api/books/search/?query=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(data => {
+            const resultsDiv = document.getElementById('searchResults');
+            resultsDiv.innerHTML = '';
+
+            if (data.success && data.data.length > 0) {
+                const row = document.createElement('div');
+                row.className = 'row g-4';
+
+                data.data.forEach(book => {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-4';
+
+                    const card = document.createElement('div');
+                    card.className = 'card h-100';
+
+                    let coverHtml = '';
+                    if (book.cover_id) {
+                        coverHtml = `
+                            <img src="https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg" 
+                                 class="card-img-top" 
+                                 alt="${book.title}"
+                                 style="height: 200px; object-fit: cover;">
+                        `;
+                    }
+
+                    card.innerHTML = `
+                        ${coverHtml}
+                        <div class="card-body">
+                            <h5 class="card-title">${book.title}</h5>
+                            <p class="card-text">
+                                <strong>Автор:</strong> ${book.author}<br>
+                                <strong>Год:</strong> ${book.first_publish_year}<br>
+                                <strong>ISBN:</strong> ${book.isbn}
+                            </p>
+                        </div>
+                    `;
+
+                    col.appendChild(card);
+                    row.appendChild(col);
+                });
+
+                resultsDiv.appendChild(row);
+            } else {
+                resultsDiv.innerHTML = '<p class="text-muted">Книги не найдены</p>';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Произошла ошибка при поиске книг');
+        });
+}
+
+// Add event listeners for Enter key
+document.getElementById('cityInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        getWeather();
+    }
+});
+
+document.getElementById('bookQuery').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        searchBooks();
+    }
+});
+</script>
+{% endblock %}
+{% endblock %} 

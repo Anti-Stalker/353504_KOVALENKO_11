@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Избранное - BookStore{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4"><i class="fas fa-heart me-2"></i>Избранное</h1>
+
+    {% if favorites %}
+        <div class="row">
+            {% for favorite in favorites %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ favorite.book.title }}</h5>
+                        <p class="card-text">{{ favorite.book.summary|truncatewords:30 }}</p>
+                        
+                        <div class="mb-3">
+                            <span class="badge bg-primary me-2">{{ favorite.book.price }} BYN</span>
+                            {% if favorite.book.age_restriction > 0 %}
+                            <span class="badge bg-warning">{{ favorite.book.age_restriction }}+</span>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-1"></i>Добавлено {{ favorite.added_at|date:"d.m.Y" }}
+                            </small>
+                        </div>
+                        
+                        <div class="btn-group mt-3">
+                            <a href="{% url 'books:book-detail' favorite.book.pk %}" class="btn btn-custom-primary">
+                                <i class="fas fa-info-circle me-1"></i>Подробнее
+                            </a>
+                            <a href="{% url 'books:add-to-cart' favorite.book.pk %}" class="btn btn-custom-secondary">
+                                <i class="fas fa-shopping-cart me-1"></i>В корзину
+                            </a>
+                            <a href="{% url 'books:remove-from-favorite' favorite.pk %}" 
+                               class="btn btn-danger remove-favorite"
+                               data-favorite-id="{{ favorite.pk }}">
+                                <i class="fas fa-trash me-1"></i>Удалить
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle me-2"></i>У вас пока нет избранных книг.
+            <a href="{% url 'books:book-list' %}" class="alert-link">Перейти в каталог</a>
+        </div>
+    {% endif %}
+</div>
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.remove-favorite').forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const favoriteId = this.dataset.favoriteId;
+            const card = this.closest('.col-md-4');
+            
+            fetch(this.href, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'removed') {
+                    card.remove();
+                    if (document.querySelectorAll('.col-md-4').length === 0) {
+                        location.reload();
+                    }
+                }
+            });
+        });
+    });
+});
+</script>
+{% endblock %}
+{% endblock %} 

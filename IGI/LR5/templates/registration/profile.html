@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Профиль - BookStore{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Профиль пользователя</h2>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Сохранить изменения
+                            </button>
+                        </div>
+                    </form>
+
+                    {% if user.is_staff or user.is_superuser %}
+                        <hr>
+                        <div class="d-grid gap-2">
+                            <a href="{% url 'books:purchase-history' %}" class="btn btn-info">
+                                <i class="fas fa-history me-2"></i>История покупок
+                            </a>
+                            <a href="{% url 'books:statistics' %}" class="btn btn-success">
+                                <i class="fas fa-chart-bar me-2"></i>Статистика
+                            </a>
+                            {% if user.is_superuser %}
+                                <a href="{% url 'admin:index' %}" class="btn btn-warning" target="_blank">
+                                    <i class="fas fa-tools me-2"></i>Админ-панель
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

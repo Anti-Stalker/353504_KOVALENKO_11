@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Поиск книг{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Поиск книг в Google Books</h1>
+    
+    <form method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" value="{{ query }}" placeholder="Введите название книги...">
+            <button type="submit" class="btn btn-primary">Поиск</button>
+        </div>
+    </form>
+
+    {% if books %}
+        <div class="row">
+            {% for item in books.items %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        {% if item.volumeInfo.imageLinks.thumbnail %}
+                            <img src="{{ item.volumeInfo.imageLinks.thumbnail }}" class="card-img-top" alt="{{ item.volumeInfo.title }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.volumeInfo.title }}</h5>
+                            {% if item.volumeInfo.authors %}
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        {{ item.volumeInfo.authors|join:", " }}
+                                    </small>
+                                </p>
+                            {% endif %}
+                            <a href="{% url 'api:book-detail' item.id %}" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        {% if query %}
+            <p>По вашему запросу ничего не найдено.</p>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %} 
