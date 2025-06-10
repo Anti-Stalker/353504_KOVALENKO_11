@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="40afe453-bdb6-4e2f-9ab0-dfec0ed7dff9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/Paint/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/Paint/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/Paint/FileContentIndex/9adf0134-981f-474c-af17-27818a511e58.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/Paint/FileContentIndex/d6515f79-d587-4a48-83ca-dfd9960f30aa.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/Paint/FileContentIndex/f711f59f-78af-4b17-a205-07f8b0e1d3d0.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/Paint/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/Paint/v17/.futdcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/Paint/v17/DocumentLayout.backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/Paint/v17/DocumentLayout.backup.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/Paint/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/Paint/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/ProjectEvaluation/paint.metadata.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/ProjectEvaluation/paint.metadata.v9.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/ProjectEvaluation/paint.projects.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/ProjectEvaluation/paint.projects.v9.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/ProjectEvaluation/paint.strings.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Paint/.vs/ProjectEvaluation/paint.strings.v9.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Tests1/bin/Debug/net8.0/CoverletSourceRootsMapping_Tests1" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Tests1/bin/Debug/net8.0/CoverletSourceRootsMapping_Tests1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/Debug/net8.0/Tests1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/Debug/net8.0/Tests1.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/Debug/net8.0/Tests1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/Debug/net8.0/Tests1.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/Debug/net8.0/Tests1.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/Debug/net8.0/Tests1.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/Debug/net8.0/Tests1.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/Debug/net8.0/Tests1.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/Debug/net8.0/Tests1.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/Debug/net8.0/Tests1.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/Tests1.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/Tests1.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP/LR1/Tests1/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP/LR2/READ.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2vwrIqeQepSV9IadxExvE0fv8q3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Task_1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;OOP__LR1&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Git/353504_KOVALENKO_11-my/IGI/LR4&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\353501_MALINOVSKAYA_11\IGI\LR4" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="LR4" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-PY-251.23774.444" />
+        <option value="bundled-python-sdk-890ed5b35930-d9c5bdb153f4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.23774.444" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="40afe453-bdb6-4e2f-9ab0-dfec0ed7dff9" name="Changes" comment="" />
+      <created>1745066900223</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745066900223</updated>
+      <workItem from="1747808576961" duration="800000" />
+      <workItem from="1747810361277" duration="680000" />
+      <workItem from="1747837093159" duration="3501000" />
+      <workItem from="1747918578621" duration="3017000" />
+      <workItem from="1749062282734" duration="22000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/LR4$main.coverage" NAME="main Coverage Results" MODIFIED="1747919065867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

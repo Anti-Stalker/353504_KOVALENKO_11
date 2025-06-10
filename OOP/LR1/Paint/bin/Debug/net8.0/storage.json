@@ -1,0 +1,21 @@
+[
+  {
+    "$type": "Rectangle, Paint",
+    "A": 10,
+    "B": 10,
+    "X": 105,
+    "Y": 34,
+    "Sym": " ",
+    "Back": false
+  },
+  {
+    "$type": "Triangle, Paint",
+    "A": 10,
+    "D": 10,
+    "C": 10,
+    "X": 105,
+    "Y": 34,
+    "Sym": "#",
+    "Back": true
+  }
+]
